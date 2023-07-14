@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Post a job position or create your online resume by TheJobs!">
+    <meta name="keywords" content="">
+
+    <title>TheJobs</title>
+
+    <link rel="stylesheet" href="~/css/app.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/jobSearch.styles.css" asp-append-version="true" />
+
+    <link href='http://fonts.googleapis.com/css?family=Oswald:100,300,400,500,600,800%7COpen+Sans:300,400,500,600,700,800%7CMontserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="~/assets/img/favicon.ico">
+</head>
+
+<body class="nav-on-header">
+    <nav class="navbar">
+        <div class="container">
+            <div class="pull-left">
+                <a class="navbar-toggle" href="#" data-toggle="offcanvas"><i class="ti-menu"></i></a>
+                <div class="logo-wrapper">
+                    <a class="logo" href="index.html"><img src="~/assets/img/logo.png" alt="logo"></a>
+                    <a class="logo-alt" href="index.html"><img src="~/assets/img/logo-alt.png" alt="logo-alt"></a>
+                </div>
+            </div>
+            <ul class="nav-menu">
+                <li>
+                    <a class="active" href="index.html">Главная страница</a>
+                </li>
+                <li>
+                    <a href="#">Вакансии</a>
+                </li>
+                <li>
+                    <a href="#">Резюме</a>
+                    <ul>
+                        <li><a href="#">Просмотреть резюме</a></li>
+                        <li><a href="#">Создать резюме</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Компании</a>
+                    <ul>
+                        <li><a href="#">Просмотр компаний</a></li>
+                        <li><a href="#">Создать компанию</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Прочее</a>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Цены</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="pull-right user-login">
+                <a class="btn btn-sm btn-primary" href="user-login.html">Войти</a> или <a href="user-register.html">зарегистрироваться</a>
+            </div>
+        </div>
+    </nav>
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - jobSearch - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

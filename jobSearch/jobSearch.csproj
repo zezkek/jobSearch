@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\.DS_Store" />
+    <None Include="wwwroot\css\.DS_Store" />
+    <None Include="wwwroot\css\app.min.css" />
+    <None Include="wwwroot\css\custom.css" />
+    <None Include="wwwroot\css\summernote.css" />
+    <None Include="wwwroot\js\fonts\.DS_Store" />
+    <None Include="wwwroot\js\fonts\dropify.woff" />
+    <None Include="wwwroot\js\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\js\fonts\IQHow_FEYlDC4Gzy_m8fcmaVI6zN22yiurzcBKxPjFE.woff2" />
+    <None Include="wwwroot\js\fonts\summernote.woff" />
+    <None Include="wwwroot\js\fonts\themify.woff" />
+    <None Include="wwwroot\js\fonts\zhcz-_WihjSQC0oHJ9TCYAzyDMXhdD8sAj6OAJTFsBI.woff2" />
+    <None Include="wwwroot\js\fonts\_P8jt3Y65hJ9c4AzRE0V1OvvDin1pK8aKteLpeZ5c0A.woff2" />
+    <None Include="wwwroot\assets\img\avatar-1.jpg" />
+    <None Include="wwwroot\assets\img\avatar-2.jpg" />
+    <None Include="wwwroot\assets\img\avatar-3.jpg" />
+    <None Include="wwwroot\assets\img\avatar-4.jpg" />
+    <None Include="wwwroot\assets\img\avatar.jpg" />
+    <None Include="wwwroot\assets\img\bg-banner1.jpg" />
+    <None Include="wwwroot\assets\img\bg-banner2.jpg" />
+    <None Include="wwwroot\assets\img\bg-facts.jpg" />
+    <None Include="wwwroot\assets\img\bg-pattern.png" />
+    <None Include="wwwroot\assets\img\how-it-works.png" />
+    <None Include="wwwroot\assets\img\logo-alt.png" />
+    <None Include="wwwroot\assets\img\logo-berkeley.png" />
+    <None Include="wwwroot\assets\img\logo-default.png" />
+    <None Include="wwwroot\assets\img\logo-envato.png" />
+    <None Include="wwwroot\assets\img\logo-facebook.png" />
+    <None Include="wwwroot\assets\img\logo-google.jpg" />
+    <None Include="wwwroot\assets\img\logo-linkedin.png" />
+    <None Include="wwwroot\assets\img\logo-microsoft.jpg" />
+    <None Include="wwwroot\assets\img\logo-mit.png" />
+    <None Include="wwwroot\assets\img\logo.png" />
+    <None Include="wwwroot\js\.DS_Store" />
+    <None Include="wwwroot\js\app.min.js" />
+    <None Include="wwwroot\js\custom.js" />
+    <None Include="wwwroot\js\summernote.js" />
+    <None Include="wwwroot\js\summernote.min.js" />
+  </ItemGroup>
+
+</Project>
