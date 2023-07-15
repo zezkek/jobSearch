@@ -8,7 +8,7 @@
     <meta name="description" content="Post a job position or create your online resume by TheJobs!">
     <meta name="keywords" content="">
 
-    <title>TheJobs</title>
+    <title>@ViewData["Title"] - Работа</title>
 
     <link rel="stylesheet" href="~/css/app.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
@@ -63,9 +63,7 @@
                     </ul>
                 </li>
             </ul>
-            <div class="pull-right user-login">
-                <a class="btn btn-sm btn-primary" href="user-login.html">Войти</a> или <a href="user-register.html">зарегистрироваться</a>
-            </div>
+            <partial name="_Identity.cshtml" />
         </div>
     </nav>
     <main role="main">

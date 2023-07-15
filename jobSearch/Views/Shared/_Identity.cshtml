@@ -1,0 +1,14 @@
+﻿@inject UserManager<ApplicationUser> UserManager;
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="pull-right user-login">
+        <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Login">Войти</a> или <a asp-controller="Account" asp-action="Register">зарегистрироваться</a>
+    </div>
+}
+else
+{
+    <div class="pull-right user-login">
+        <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="LogOff">Выйти</a>
+    </div>
+}
