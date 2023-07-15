@@ -1,4 +1,5 @@
-﻿@{
+﻿@model jobSearch.ViewModel.RegisterVM;
+@{
     ViewData["Title"] = "Регистрация";
 }
 
@@ -6,39 +7,28 @@
     <div class="login-block">
         <img src="assets/img/logo.png" alt="">
         <h1>Регистрация нового пользователя</h1>
-
-        <form action="#">
-
+        <form action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="ti-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Имя">
-                </div>
+                <input asp-for="Name" class="form-control" placeholder="Имя" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-
-            <hr class="hr-xs">
-
             <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="ti-email"></i></span>
-                    <input type="text" class="form-control" placeholder="Почта">
-                </div>
+                <input asp-for="EmailAddress" class="form-control" placeholder="Почта" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
             </div>
-
-            <hr class="hr-xs">
-
             <div class="form-group">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="ti-unlock"></i></span>
-                    <input type="password" class="form-control" placeholder="Пароль">
-                </div>
+                <input asp-for="Password" class="form-control" placeholder="Пароль" />
+                <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="Подтверждение пароля" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
             <button class="btn btn-primary btn-block" type="submit">Зарегистрироваться</button>
         </form>
     </div>
-
     <div class="login-links">
-        <p class="text-center">Уже есть аккаунт?? <a asp-controller="Account" asp-action="Login">Войти</a></p>
+        <p class="text-center">Уже есть аккаунт?<a asp-controller="Account" asp-action="Login">Войти</a></p>
     </div>
 </div>

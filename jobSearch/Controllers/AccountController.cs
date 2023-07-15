@@ -1,93 +1,77 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using jobSearch.Data;
+using jobSearch.Models;
+using jobSearch.ViewModel;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace jobSearch.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: AccountController
-        public ActionResult Index()
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly AppDbContext _context;
+
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context)
         {
-            return View();
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _context = context;
         }
 
-        // GET: AccountController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        public IActionResult Register() => View(new RegisterVM());
 
-        // GET: AccountController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AccountController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Register(RegisterVM registerVM)
         {
-            try
+            if (!ModelState.IsValid) return View(registerVM);
+
+            var user = await _userManager.FindByEmailAsync(registerVM.EmailAddress);
+            if (user != null)
             {
-                return RedirectToAction(nameof(Index));
+                TempData["Error"] = "Пользователь с такой почтой уже существует!";
+                return View(registerVM);
             }
-            catch
+
+            var newUser = new ApplicationUser()
             {
-                return View();
-            }
+                Email = registerVM.EmailAddress,
+                UserName = registerVM.EmailAddress
+            };
+            var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
+
+            if (newUserResponse.Succeeded)
+                await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+
+            return View("Login");
         }
 
-        // GET: AccountController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
+        public IActionResult Login() => View(new LoginVM());
 
-        // POST: AccountController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Login(LoginVM loginVM)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            if (!ModelState.IsValid) return View(loginVM);
 
-        // GET: AccountController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: AccountController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
+            var user = await _userManager.FindByEmailAsync(loginVM.EmailAddress);
+            if (user != null)
             {
-                return RedirectToAction(nameof(Index));
+                var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
+                if (passwordCheck)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                TempData["Error"] = "Неверные данные.";
+                return View(loginVM);
             }
-            catch
-            {
-                return View();
-            }
-        }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        public IActionResult Login()
-        {
-            return View();
+            TempData["Error"] = "Неверные данные.";
+            return View(loginVM);
         }
     }
 }
