@@ -1,0 +1,68 @@
+﻿@model List<jobSearch.Models.Vacancy>
+@{
+    ViewData["Title"] = "Список вакансий";
+}
+
+
+<div class="w-75 center-block">
+    <section>
+        <div class="container  bg-dark-light">
+            <div class="row">
+                <div class="col-xs-12">
+                    <br>
+                    <h5>Найдено <strong>@Model.Count</strong> вакансий</h5>
+                </div>
+                @foreach(Vacancy vacancy in Model)
+                {
+                    <div class="col-xs-12">
+                        <a class="item-block" href="job-detail.html">
+                            <header>
+                                <img src="assets/img/logo-google.jpg" alt="">
+                                <div class="hgroup">
+                                    <h4>@vacancy.Name</h4>
+                                    <h5>@vacancy.Firm.Name<span class="label label-success"></h5>
+                                </div>
+                            </header>
+
+                            <div class="item-body">
+                                <p>@vacancy.Description</p>
+                            </div>
+
+                            <footer>
+                                <ul class="details cols-3">
+                                    <li>
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>@vacancy.Firm.Adress</span>
+                                    </li>
+
+                                    <li>
+                                        <i class="fa fa-money"></i>
+                                        <span>@vacancy.Salary</span>
+                                    </li>
+                                </ul>
+                            </footer>
+                        </a>
+                    </div>
+                }
+            </div>
+            <nav class="text-center">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <i class="ti-angle-left"></i>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <i class="ti-angle-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+</div>
