@@ -1,4 +1,5 @@
-﻿using jobSearch.Models;
+﻿using jobSearch.Data;
+using jobSearch.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,29 +7,14 @@ namespace jobSearch.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private AppDbContext _appDbContext;
+        public HomeController(AppDbContext appDbContext)
         {
-            _logger = logger;
+            _appDbContext = appDbContext;
         }
-
         public IActionResult Index()
         {
-            return View();
+            return View(_appDbContext.Vacancy.ToList());
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-
     }
 }
